@@ -19,7 +19,8 @@
         @endif
     </div>
     <div class="col-6 container">
-        <form action="create_product" method="POST">
+        <form action="{{ route('create_product') }}" enctype="multipart/form-data" method="POST">
+        @csrf
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" name="name" id="name_product" placeholder="name">
                 <label for="name_product">Name</label>
@@ -29,7 +30,7 @@
                 <label for="description">description</label>
             </div>
             <div class="mt-3">
-                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <select name="details" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                     <option selected>Category</option>
                     @foreach ($category as  $group)
                     <option value="{{ $group->name_en }}">{{ $group->name_fa }}</option>
@@ -37,12 +38,13 @@
                 </select>
             </div>
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                <input class="form-check-input" type="checkbox" name="new" id="flexSwitchCheckChecked" checked>
                 <label class="form-check-label" for="flexSwitchCheckChecked">Your Product New</label>
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Image Product</label>
-                <input class="form-control" type="file" id="formFile">
+                <input class="form-control" type="file" name="img" id="formFile">
+                <input class="form-control" type="text" name="image" id="formFile">
             </div>
             <div class="form-floating">
                 <input type="number" class="form-control" name="price" id="price" placeholder="Price">

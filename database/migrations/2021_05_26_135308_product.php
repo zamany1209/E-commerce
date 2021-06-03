@@ -19,10 +19,10 @@ class Product extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('details');
-            $table->boolean('new');
+            $table->enum('new',['on','off'])->default('off');
             $table->string('url_img');
             $table->string('price');
-            $table->string('price_discount');
+            $table->string('price_discount')->nullable();
             $table->timestamps();
         });
     }

@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,7 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/',[HomeController::class, 'index']);
+Route::get('/product/{url}',[ProductController::class, 'index']);
 Route::get('login',[UserController::class, 'login']);
 Route::get('register',[UserController::class, 'register']);
 Route::post('create',[UserController::class, 'create'])->name('auth.create');
@@ -28,4 +31,4 @@ Route::get('logaut',[UserController::class, 'logaut']);
 /*    admin    */
 
 Route::get('/admin',[AdminController::class, 'index']);
-Route::post('create_product',[AdminController::class, 'Create']);
+Route::post('/create_product',[AdminController::class, 'Create_Product'])->name('create_product');
