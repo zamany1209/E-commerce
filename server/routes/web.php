@@ -30,5 +30,9 @@ Route::get('logaut',[UserController::class, 'logaut']);
 
 /*    admin    */
 
+Route::get('/live', function() {
+    return view('live');
+});
+
 Route::get('/admin',[AdminController::class, 'index']);
 Route::post('/create_product',[AdminController::class, 'Create_Product'])->name('create_product');
