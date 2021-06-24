@@ -16,9 +16,9 @@ class Category extends Migration
         //
         Schema::create('category', function (Blueprint $table) {
             $table->id();
-            $table->string('name_en');
-            $table->string('name_fa');
-            $table->enum('more',['on','off'])->default('off');
+            $table->string('name')->unique();
+            // $table->enum('parent_group',['on','off'])->default('on');
+            // $table->string('category_id')->nullable();
             $table->timestamps();
         });
     }

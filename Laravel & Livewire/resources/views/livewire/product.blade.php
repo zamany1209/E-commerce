@@ -30,15 +30,38 @@
             @endforeach
           </div>
         </div>
-        <div class="col-lg-8">
+        <div class="col-lg-12">
           <div class="single_product_text text-center">
             <h3>{{ $product->name }}</h3>
             <p>{{ $product->description }}</p>
-             @livewire('add-to-cart', ['price' => $product->price , 'id_product' => $product->id ] , key($product->id))
+            <div class="row">
+                <div class="col-lg-12">
+                  <div class="order_details_iner">
+                    <h3>Product Details</h3>
+                    <table class="table table-borderless">
+                      <thead>
+                        <tr>
+                          <th scope="col" colspan="2">Details</th>
+                          <th scope="col">Details</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          @foreach ($details as $detailse)
+                            <tr>
+                                <th colspan="2"><span>{{ $detailse->name }}</span></th>
+                                <th> <span>{{ $detailse->description }}</span></th>
+                            </tr>
+                          @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+             @livewire('add-to-cart', ['price' => $product->price , 'product_id' => $product->id ] , key($product->id))
           </div>
         </div>
       </div>
     </div>
   </div>
-  @livewire('comments', ['id_product' => $product->id ] , key($product->id))
+  @livewire('comments', ['product_id' => $product->id ] , key($product->id))
   @livewire('news')

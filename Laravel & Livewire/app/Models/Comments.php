@@ -14,7 +14,9 @@ class Comments extends Model
         'family',
         'product_id',
         'user_id',
+        'com_id',
         'content',
-        'confirmed'
+        'confirmed',
+        'created_at'
     ];
 }

@@ -14,8 +14,9 @@ class Product extends Model
         'id',
         'name',
         'description',
-        'details',
+        'category',
         'new',
+        'featured',
         'url_img',
         'price',
         'price_discount'

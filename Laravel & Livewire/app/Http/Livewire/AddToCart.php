@@ -9,7 +9,7 @@ class AddToCart extends Component
 {
     public $number = 1;
     public $price;
-    public $id_product;
+    public $product_id;
     public $fe_price;
     public function plus()
     {
@@ -30,14 +30,14 @@ class AddToCart extends Component
     {
         if(session()->has('loggedUser'))
         {
-            if(Cart::where('product_id' ,'=', $this->id_product)->where('user_id', '=', session('loggedUser'))->first())
+            if(Cart::where('product_id' ,'=', $this->product_id)->where('user_id', '=', session('loggedUser'))->first())
             {
                 return back()->with('error_cart', 'قبلا به سبد خرید اضافه شده است');
             }
             else
             {
                 $add_cart = Cart::create([
-                    'product_id' => $this->id_product,
+                    'product_id' => $this->product_id,
                     'user_id' => session('loggedUser')
                 ]);
             }

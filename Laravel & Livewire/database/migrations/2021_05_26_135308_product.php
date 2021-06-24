@@ -18,8 +18,11 @@ class Product extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->string('details');
-            $table->enum('new',['on','off'])->default('off');
+            $table->string('category');
+            // $table->enum('new',["off","on"])->default("off");
+            $table->boolean('new')->default(0);
+            $table->boolean('featured')->default(0);
+            // $table->enum('featured',["off","on"])->default("off");
             $table->string('url_img');
             $table->string('price');
             $table->string('price_discount')->nullable();

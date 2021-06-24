@@ -138,7 +138,7 @@
                                 <div class="single-product mb-60">
                                     <div class="product-img">
                                         <img src="product/{{ $products->url_img }}" alt="">
-                                        @if ($products->new == "on")
+                                        @if ($products->new == "1")
                                             <div class="new-product">
                                                 <span>New</span>
                                             </div>
@@ -163,7 +163,9 @@
                                 </div>
                             </div>
                         @endforeach
-
+                        </div>
+                        <div class="load_more_btn text-center col-center">
+                            <a href="/product-list" class="btn_3">Load More</a>
                         </div>
                     </div>
 

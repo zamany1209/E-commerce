@@ -19,9 +19,10 @@ class ProductComments extends Migration
             $table->string('family');
             $table->string('product_id');
             $table->string('user_id');
-            $table->string('com_id')->default(null);
+            $table->string('com_id')->nullable();
             $table->string('content');
-            $table->enum('confirmed',['yes','no'])->default('yes');
+            // $table->enum('confirmed',['yes','no'])->default('yes');
+            $table->boolean('confirmed')->default(1);
             $table->timestamps();
         });
     }

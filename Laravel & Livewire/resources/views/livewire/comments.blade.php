@@ -1,89 +1,41 @@
             <div class="col-lg-8 posts-list container">
                <div class="comments-area">
-                  <h4>05 Comments</h4>
+                  <h4>{{ $comment_total }}  Comments</h4>
+                  @foreach ($comment as $comments)
                   <div class="comment-list">
-                     <div class="single-comment justify-content-between d-flex">
-                        <div class="user justify-content-between d-flex">
-                           <div class="thumb">
-                              <img src="{{ asset('') }}assets/img/comment/comment_1.png" alt="">
-                           </div>
-                           <div class="desc">
-                              <p class="comment">
-                                <h3>zamany</h3>
-                                 Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                 Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                              </p>
-                              <div class="d-flex justify-content-between">
-                                 <div class="d-flex align-items-center">
-                                    <h5>
-                                       <a href="#">Emilly Blunt</a>
-                                    </h5>
-                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                 </div>
-                                 <div class="reply-btn">
-                                    <a href="#" class="btn-reply text-uppercase">reply</a>
-                                 </div>
-                              </div>
-                           </div>
+                    <div class="single-comment justify-content-between d-flex">
+                    <div class="user justify-content-between d-flex">
+                        <div class="thumb">
+                            <img src="{{ asset('') }}assets/img/comment/comment_1.png" alt="">
                         </div>
-                     </div>
-                  </div>
-                  <div class="comment-list">
-                     <div class="single-comment justify-content-between d-flex">
-                        <div class="user justify-content-between d-flex">
-                           <div class="thumb">
-                              <img src="{{ asset('') }}assets/img/comment/comment_2.png" alt="">
-                           </div>
-                           <div class="desc">
-                              <p class="comment">
-                                 Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                 Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                              </p>
-                              <div class="d-flex justify-content-between">
-                                 <div class="d-flex align-items-center">
-                                    <h5>
-                                       <a href="#">Emilly Blunt</a>
-                                    </h5>
-                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                 </div>
-                                 <div class="reply-btn">
-                                    <a href="#" class="btn-reply text-uppercase">reply</a>
-                                 </div>
-                              </div>
-                           </div>
+                        <div class="desc">
+                            <p class="comment">
+                            <h3>{{ $comments->family }}</h3>
+                            {{ $comments->content }}
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex align-items-center">
+                                <p class="date">{{ $comments->created_at}}</p>
+                                </div>
+                                <div class="reply-btn">
+                                    <a class="btn-reply text-uppercase ml-2" wire:click.prevent="reply({{$comments}})">reply</a>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-                  <div class="comment-list">
-                     <div class="single-comment justify-content-between d-flex">
-                        <div class="user justify-content-between d-flex">
-                           <div class="thumb">
-                              <img src="{{ asset('') }}assets/img/comment/comment_3.png" alt="">
-                           </div>
-                           <div class="desc">
-                              <p class="comment">
-                                 Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                 Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                              </p>
-                              <div class="d-flex justify-content-between">
-                                 <div class="d-flex align-items-center">
-                                    <h5>
-                                       <a href="#">Emilly Blunt</a>
-                                    </h5>
-                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                 </div>
-                                 <div class="reply-btn">
-                                    <a href="#" class="btn-reply text-uppercase">reply</a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
+                    </div>
+                    </div>
+                </div>
+                    @if (DB::table('product_comments')->where('com_id','=',"$comments->id")->get())
+                        @foreach ( as )
+
+                        @endforeach
+                    @endif
+                  @endforeach
                </div>
 
                <div class="comment-form">
                   <h4>Leave a Reply</h4>
+                    <h3>Replys to : <b> {{ $family_comment }}</b></h3>
                   <p>
                     @if(Session::get('comment'))
                         {{ Session::get('comment') }}
@@ -94,9 +46,10 @@
                         {{ Session::get('error_comment') }}
                     @endif
                   </p>
-                  <form class="form-contact comment_form" id="commentForm" action="{{ route('auth.comment') }}" method="post">
+                  <form class="form-contact comment_form" id="commentForm" action="{{ route('auth.comment') }}" method="POST">
                   @csrf
-                  <input type="hidden" name="product_id" value="{{ $id_product+524 }}">
+                  <input type="hidden" name="product_id" value="{{ $product_id+524 }}">
+                  <input type="hidden" name="comment_id" value="{{ $comment_id }}">
                      <div class="row">
                         <div class="col-12">
                            <div class="form-group">

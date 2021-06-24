@@ -26,7 +26,7 @@ class Index extends Component
     }
     public function mount()
     {
-        $this->product = Product::all();
+        $this->product = Product::where('featured', '1')->take(18)->inRandomOrder()->get();
     }
     public function render()
     {

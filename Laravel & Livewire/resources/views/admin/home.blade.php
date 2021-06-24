@@ -7,58 +7,115 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>Admin</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    @livewireStyles
 </head>
+<style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
 <body>
-<h2>Admin Page</h2>
-    <div>
-    @if ($message)
-        {{ $message }}
-    @endif
-        @if(Session::get('Success'))
-            {{ Session::get('Success') }}
-        @endif
+        @livewire('admin.header')
+
+<div class="container-fluid">
+    <div class="row">
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">
+                <span data-feather="home"></span>
+                Dashboard
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file"></span>
+                Orders
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ asset('admin/product-list')}}">
+                <span data-feather="shopping-cart"></span>
+                Products
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="users"></span>
+                Customers
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="bar-chart-2"></span>
+                Reports
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="layers"></span>
+                Integrations
+              </a>
+            </li>
+          </ul>
+
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Saved reports</span>
+            <a class="link-secondary" href="#" aria-label="Add a new report">
+              <span data-feather="plus-circle"></span>
+            </a>
+          </h6>
+          <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text"></span>
+                Current month
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text"></span>
+                Last quarter
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text"></span>
+                Social engagement
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text"></span>
+                Year-end sale
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+        @livewire('admin.home')
+      </main>
     </div>
-    <div class="col-6 container">
-        <form action="{{ route('create_product') }}" enctype="multipart/form-data" method="POST">
-        @csrf
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="name" id="name_product" placeholder="name">
-                <label for="name_product">Name</label>
-            </div>
-            <div class="form-floating">
-                <input type="text" class="form-control" name="description" id="description" placeholder="description">
-                <label for="description">description</label>
-            </div>
-            <div class="mt-3">
-                <select name="details" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                    <option selected>Category</option>
-                    @foreach ($category as  $group)
-                    <option value="{{ $group->name_en }}">{{ $group->name_fa }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" name="new" id="flexSwitchCheckChecked" checked>
-                <label class="form-check-label" for="flexSwitchCheckChecked">Your Product New</label>
-            </div>
-            <div class="mb-3">
-                <label for="formFile" class="form-label">Image Product</label>
-                <input class="form-control" type="file" name="img" id="formFile">
-                <input class="form-control" type="text" name="image" id="formFile">
-            </div>
-            <div class="form-floating">
-                <input type="number" class="form-control" name="price" id="price" placeholder="Price">
-                <label for="price">Price</label>
-            </div>
-            <div class="form-floating mt-3">
-                <input type="number" class="form-control" name="pricediscount" id="pricediscount" placeholder="PriceDiscount">
-                <label for="pricediscount">PriceDiscount</label>
-            </div>
-            <div class="col-auto mt-3">
-                <button type="submit" class="btn btn-primary mb-3">Save</button>
-            </div>
-        </form>
-    </div>
+  </div>
+
+
+    @livewireScripts
+    <script src="js/dashboard.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

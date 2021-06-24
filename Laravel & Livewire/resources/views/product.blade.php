@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>eCommerce HTML-5 Template </title>
+        <title>{{ $product->name }}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
@@ -25,7 +25,7 @@
 
    <body>
     @livewire('header')
-    @livewire('product')
+    @livewire('product',['product' => $product], key($product->id))
     @livewire('footer')
         @livewireScripts
 		<!-- All JS Custom Plugins Link Here here -->

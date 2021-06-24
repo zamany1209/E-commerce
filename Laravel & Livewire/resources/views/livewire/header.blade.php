@@ -99,7 +99,7 @@
                                 <ul class="header-right f-right d-none d-lg-block d-flex justify-content-between">
                                     <li class="d-none d-xl-block">
                                         <div class="form-box f-right ">
-                                            <input type="text" name="Search" placeholder="Search products">
+                                            <input type="text" name="Search" placeholder="Search">
                                             <div class="search-icon">
                                                 <i class="fas fa-search special-tag"></i>
                                             </div>
@@ -107,12 +107,14 @@
                                      </li>
                                     <li class=" d-none d-xl-block">
                                         <div class="favorit-items">
-                                            <i class="far fa-heart"></i>
+                                            <a href="/like">
+                                                <i class="far fa-heart"></i>
+                                            </a>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="shopping-card">
-                                            <a href="cart.html">
+                                            <a href="/cart">
                                                 <i class="fas fa-shopping-cart">
                                                     <span class="badge bg-light text-dark rounded-pill align-text-bottom mb-3">{{ $cartItem }}</span>
                                                 </i>
@@ -120,7 +122,7 @@
                                         </div>
                                     </li>
                                     @if(session()->has('loggedUser'))
-                                        <li class="d-none d-lg-block"> <a href="#" class="btn header-btn">{{ $user->family }}</a></li>
+                                        <li class="d-none d-lg-block"> <a href="/profile" class="btn header-btn">{{ $user->family }}</a></li>
                                     @else
                                         <li class="d-none d-lg-block"> <a href="/login" class="btn header-btn">Sign in</a></li>
                                     @endif
