@@ -25,11 +25,6 @@
                     </div>
                     </div>
                 </div>
-                    @if (DB::table('product_comments')->where('com_id','=',"$comments->id")->get())
-                        @foreach ( as )
-
-                        @endforeach
-                    @endif
                   @endforeach
                </div>
 

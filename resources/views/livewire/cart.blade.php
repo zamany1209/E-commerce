@@ -45,16 +45,6 @@
                 </td>
                 <td>
                   <div class="product_count">
-                    <!-- <input type="text" value="1" min="0" max="10" title="Quantity:"
-                      class="input-text qty input-number" />
-                    <button
-                      class="increase input-number-increment items-count" type="button">
-                      <i class="ti-angle-up"></i>
-                    </button>
-                    <button
-                      class="reduced input-number-decrement items-count" type="button">
-                      <i class="ti-angle-down"></i>
-                    </button> -->
                     <span class="input-number-decrement"> <i class="ti-minus"></i></span>
                     <input class="input-number" type="text" value="1" min="0" max="10">
                     <span class="input-number-increment"> <i class="ti-plus"></i></span>
