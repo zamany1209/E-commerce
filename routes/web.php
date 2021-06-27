@@ -73,6 +73,9 @@ Route::get('admin/list-image/{url}', function($url) {
 Route::get('admin/edite-product/{url}', function($url) {
     return view('admin/edite-product',["id_product" => $url]);
 });
+Route::get('admin/delete-product/{url}', function($url) {
+    return view('admin/delete-product',["id_product" => $url]);
+});
 Route::post('create_product',[AdminController::class, 'Create_Product'])->name('admin.Create_Product');
 Route::post('create_image_product',[AdminController::class, 'Create_Image_Product'])->name('admin.Create_Image_Product');
 Route::post('edite_product',[AdminController::class, 'Edite_Product'])->name('admin.Edite_Product');

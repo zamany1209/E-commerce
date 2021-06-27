@@ -24,7 +24,7 @@
                     <td>{{ $products->price}}</td>
                     <td><a href="{{ asset('admin/edite-product') }}/{{ $products->id }}" class="btn btn-warning p-1">Edite</a></td>
                     <td><a href="{{ asset('admin/list-image') }}/{{ $products->id }}" class="btn btn-info p-1">Image</a></td>
-                    <td><a class="btn btn-danger p-1">Delete</a></td>
+                    <td><a href="{{ asset('admin/delete-product') }}/{{ $products->id }}"  class="btn btn-danger p-1">Delete</a></td>
                 </tr>
             @endforeach
         </tbody>
